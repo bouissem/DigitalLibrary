@@ -1,33 +1,51 @@
 @startuml
 
 class Book {
-    -id : int
-    -title : str
-    -author : str
-    -available : bool
+    - id : int
+    - title : str
+    - author : str
+    - available : bool
+    + __init__(book_id, title, author)
+    + id : property
+    + title : property
+    + author : property
+    + available : property
+    + available(status) : setter
+    + __str__()
 }
 
 class User {
-    -id : int
-    -name : str
+    - id : int
+    - name : str
+    + __init__(user_id, name)
+    + id : property
+    + name : property
+    + __str__()
 }
 
 class Loan {
-    -book : Book
-    -user : User
-    -returned : bool
+    - book : Book
+    - user : User
+    - returned : bool
+    + __init__(book, user)
+    + book : property
+    + user : property
+    + returned : property
+    + return_book()
+    + __str__()
 }
 
 class Library {
-    -books : list
-    -users : list
-    -loans : list
-    +add_book()
-    +remove_book()
-    +register_user()
-    +borrow_book()
-    +return_book()
-    +display_status()
+    - books : list
+    - users : list
+    - loans : list
+    + __init__()
+    + add_book(book)
+    + remove_book(book_id)
+    + register_user(user)
+    + borrow_book(book_id, user_id)
+    + return_book(book_id)
+    + display_status()
 }
 
 Library "1" o-- "*" Book
@@ -37,3 +55,4 @@ Loan "*" --> "1" Book
 Loan "*" --> "1" User
 
 @enduml
+

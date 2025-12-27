@@ -4,6 +4,7 @@ from library import Library
 
 
 def main():
+    # إنشاء مكتبة
     library = Library()
 
     # إنشاء كتب
@@ -14,26 +15,30 @@ def main():
     user1 = User(1, "Ahmed")
     user2 = User(2, "Sara")
 
-    # إضافة الكتب والمستخدمين
+    # إضافة الكتب والمستخدمين إلى المكتبة
     library.add_book(book1)
     library.add_book(book2)
-
     library.register_user(user1)
     library.register_user(user2)
 
-    # عرض الحالة
+    # عرض حالة المكتبة
+    print("\n--- Initial Library Status ---")
     library.display_status()
 
     # إعارة كتاب
+    print("\n--- Borrowing Book ID 1 by User ID 1 ---")
     library.borrow_book(1, 1)
 
     # عرض الحالة بعد الإعارة
+    print("\n--- Library Status After Borrowing ---")
     library.display_status()
 
     # إرجاع الكتاب
+    print("\n--- Returning Book ID 1 ---")
     library.return_book(1)
 
     # عرض الحالة النهائية
+    print("\n--- Final Library Status ---")
     library.display_status()
 
 

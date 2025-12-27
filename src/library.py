@@ -10,33 +10,23 @@ class Library:
         self.__loans = []
 
     # -------- Books --------
-    def add_book(self, book):
+    def add_book(self, book: Book):
         self.__books.append(book)
 
     def remove_book(self, book_id):
-        self.__books = [b for b in self.__books if b.get_id() != book_id]
+        self.__books = [b for b in self.__books if b.id != book_id]
 
     # -------- Users --------
-    def register_user(self, user):
+    def register_user(self, user: User):
         self.__users.append(user)
 
     # -------- Loans --------
     def borrow_book(self, book_id, user_id):
-        book = None
-        user = None
-
-        for b in self.__books:
-            if b.get_id() == book_id and b.is_available():
-                book = b
-                break
-
-        for u in self.__users:
-            if u.get_id() == user_id:
-                user = u
-                break
+        book = next((b for b in self.__books if b.id == book_id and b.available), None)
+        user = next((u for u in self.__users if u.id == user_id), None)
 
         if book and user:
-            book.set_available(False)
+            book.available = False
             loan = Loan(book, user)
             self.__loans.append(loan)
             print("Book borrowed successfully.")
@@ -45,9 +35,9 @@ class Library:
 
     def return_book(self, book_id):
         for loan in self.__loans:
-            if loan.get_book().get_id() == book_id and not loan.is_returned():
+            if loan.book.id == book_id and not loan.returned:
                 loan.return_book()
-                loan.get_book().set_available(True)
+                loan.book.available = True
                 print("Book returned successfully.")
                 return
 
@@ -57,10 +47,10 @@ class Library:
     def display_status(self):
         print("\nBooks:")
         for b in self.__books:
-            status = "Available" if b.is_available() else "Borrowed"
-            print(f"{b.get_id()} - {b.get_title()} ({status})")
+            status = "Available" if b.available else "Borrowed"
+            print(f"{b.id} - {b.title} ({status})")
 
         print("\nActive Loans:")
         for l in self.__loans:
-            if not l.is_returned():
-                print(f"{l.get_book().get_title()} borrowed by {l.get_user().get_name()}")
+            if not l.returned:
+                print(f"{l.book.title} borrowed by {l.user.name}")

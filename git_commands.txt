@@ -20,12 +20,12 @@ git push -u origin main
 # - Suppression des diagrammes UML obsolètes
 # - Ajout du diagramme principal class_diagram.png
 # - Mise à jour du README.md
-git add -u
+git add README.md uml/class_diagram.png src/*.py
 git add uml/class_diagram.png
 git add README.md
 
 # Commit des modifications
-git commit -m "Applied instructor feedback: kept only main UML diagram and updated README"
+git commit -m "Final corrections: updated UML diagram and README as per instructor feedback"
 
 # Pousser les modifications vers GitHub
 git push origin main

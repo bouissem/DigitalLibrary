@@ -3,21 +3,35 @@ class Book:
         self.__id = book_id
         self.__title = title
         self.__author = author
-        self.__available = True
+        self.__available = True  # True = disponible, False = emprunté
 
-    # Getters
-    def get_id(self):
+    # Properties (getters)
+    @property
+    def id(self):
         return self.__id
 
-    def get_title(self):
+    @property
+    def title(self):
         return self.__title
 
-    def get_author(self):
+    @property
+    def author(self):
         return self.__author
 
-    def is_available(self):
+    @property
+    def available(self):
         return self.__available
 
-    # Setters
-    def set_available(self, status):
-        self.__available = status
+    # Setter pour la disponibilité
+    @available.setter
+    def available(self, status):
+        if isinstance(status, bool):
+            self.__available = status
+        else:
+            raise ValueError("Status must be a boolean value")
+
+    # Méthode pour afficher les informations du livre
+    def __str__(self):
+        status = "Disponible" if self.__available else "Emprunté"
+        return f"Book(ID: {self.__id}, Title: '{self.__title}', Author: {self.__author}, Status: {status})"
+

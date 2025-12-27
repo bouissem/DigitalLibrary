@@ -3,9 +3,15 @@ class User:
         self.__id = user_id
         self.__name = name
 
-    # Getters
-    def get_id(self):
+    # Properties
+    @property
+    def id(self):
         return self.__id
 
-    def get_name(self):
+    @property
+    def name(self):
         return self.__name
+
+    # Optional: afficher info utilisateur
+    def __str__(self):
+        return f"User(ID: {self.__id}, Name: {self.__name})"
