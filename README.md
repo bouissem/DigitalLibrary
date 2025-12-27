@@ -29,8 +29,7 @@ The focus is on **business logic and clean OOP design**.
 ```bash
 cd src
 python main.py
-
-
+```
 
 ## 🧠 UML Design Justification
 
