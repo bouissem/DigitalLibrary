@@ -1,0 +1,32 @@
+# Initialisation du dépôt local
+git init
+
+# Ajouter tous les fichiers au suivi
+git add .
+
+# Premier commit
+git commit -m "Initial commit"
+
+# Renommer la branche principale en main
+git branch -M main
+
+# Ajouter le dépôt distant sur GitHub
+git remote add origin https://github.com/bouissem/DigitalLibrary.git
+
+# Pousser la branche main vers GitHub pour la première fois
+git push -u origin main
+
+# Après modifications suite aux remarques de l'enseignant:
+# - Suppression des diagrammes UML obsolètes
+# - Ajout du diagramme principal class_diagram.png
+# - Mise à jour du README.md
+git add -u
+git add uml/class_diagram.png
+git add README.md
+
+# Commit des modifications
+git commit -m "Applied instructor feedback: kept only main UML diagram and updated README"
+
+# Pousser les modifications vers GitHub
+git push origin main
+
